@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { OopsComponent } from './oops/oops.component';
 import { AuthGuard } from './auth.guard';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -26,7 +27,8 @@ const routes = [
     SearchComponent,
     LoginComponent,
     OopsComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
