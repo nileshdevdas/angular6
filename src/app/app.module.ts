@@ -9,14 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
 import { OopsComponent } from './oops/oops.component';
+import { AuthGuard } from './auth.guard';
 
 const routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: '**', component: OopsComponent }
 ]
-
 @NgModule({
   declarations: [
     AppComponent,
