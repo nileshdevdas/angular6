@@ -13,12 +13,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
   login() {
     sessionStorage.setItem("token", btoa(this.username + ":" + this.password));
-    //send the login infor
     this.loginService.getLoginPublisher().next({
       loggedin: true
     });
     this.router.navigate(['search']);
-
   }
 
 

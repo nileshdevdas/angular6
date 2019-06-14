@@ -10,6 +10,8 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log('Checking for Auth....');
-    return sessionStorage.getItem("token") != null
+    let result = sessionStorage.getItem("token") != null
+    console.log(result);
+    return result;
   }
 }

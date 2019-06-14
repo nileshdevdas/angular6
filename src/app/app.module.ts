@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
 import { OopsComponent } from './oops/oops.component';
 import { AuthGuard } from './auth.guard';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -24,7 +25,8 @@ const routes = [
     HomeComponent,
     SearchComponent,
     LoginComponent,
-    OopsComponent
+    OopsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
