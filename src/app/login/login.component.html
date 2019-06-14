@@ -1,18 +1,21 @@
 <div class="col-md-4">
-  <form (ngSubmit)="login()">
-    <table class="table table-bordered">
-      <tr class="form-group">
-        <td><label for="username">Username</label></td>
-        <td><input type="text" class="from-control" [(ngModel)]="username" name="username" id="username"></td>
-      </tr>
-      <tr>
-        <td><label for="password">password</label></td>
-        <td><input type="password" [(ngModel)]="password" class="from-control" name="password" id="password"></td>
-      </tr>
-      <tr>
-        <td><input type="submit" class="btn btn-success" value="Login"></td>
-        <td><input type="reset" class="btn btn-danger" value="Cancel"></td>
-      </tr>
-    </table>
-  </form>
+  <div class="panel panel-success">
+    <div class="panel-heading">Login to Enter the System</div>
+    <form (ngSubmit)="login($event)">
+      <table class="table">
+        <tr class="form-group">
+          <td><label for="username">Username</label></td>
+          <td><input type="text" class="from-control" [(ngModel)]="username" name="username" id="username"></td>
+        </tr>
+        <tr>
+          <td><label for="password">password</label></td>
+          <td><input type="password" [(ngModel)]="password" class="from-control" name="password" id="password"></td>
+        </tr>
+        <tr>
+          <td><input type="submit" class="btn btn-success" value="Login"></td>
+          <td><input type="reset" class="btn btn-danger" value="Cancel"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
 </div>

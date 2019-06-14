@@ -11,7 +11,8 @@ export class LoginComponent implements OnInit {
   password;
   constructor(public router: Router, public loginService: LoginService) { }
   ngOnInit() { }
-  login() {
+  login(evt) {
+    console.log(evt);
     sessionStorage.setItem("token", btoa(this.username + ":" + this.password));
     this.loginService.getLoginPublisher().next({
       loggedin: true
