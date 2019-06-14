@@ -1,0 +1,1126 @@
+Angular 6-11-june-2019
+-----------------------
+Web 2.0 Architeture (Why are we using Angular)
+Server side Scripting v/s client side ? 
+jsp 
+asp 
+php 
+
+a) All server side scripts give you data from server ? 
+b) dynamism the static template with  dynamic data 
+c) access session (Maintanis session on the server side via 
+		cookie , session id )
+d) Context State --> 
+e) Routing --> (Redirections adnd Routes )
+f) Filters --> (Gaurds)
+
+Bad Things ==> 
+a) Round trips 
+b) Heavy Servers --> 
+c) Call back Problems ---> 
+d) Messy coding (Role Sperations )
+e) Version Control 
+
+-------------------------------------------------------------------
+Seperate the layers the UI Layer must seperated from the backend 
+a) Rest 
+b) Ajax 
+c) Dom
+d) what about the session ? 
+
+-----------------------------------------------------------------
+javascript , javascript , javascript  	  
+html 		  css 			http 	
+-----------------------------------------------------------------
+
+MVC  : - 
+
+Model = > State 
+View  = > Medium display the state 
+Controller => A logic to decide which state 
+------------------------------------------------------------------
+
+a) i want data binding 
+b) browser history management 
+c) Route amangement 
+d) filters 
+e) services 
+f) form-managment 
+g) View and templates 
+h) directives, tag-libraries 
+=================================================================
+
+Angular 
+a) Templates 
+b) Views 
+c) Services 
+d) Directives
+e) Routes 
+f) RouteGaurds 
+g) Rendering on the client side 
+h) Event on the client side 
+i) Session on the client 
+j) context on the client side 
+k) Browser state management 
+l) Components, Services, Pipes, Gaurds, Filters, ..... 
+--------------------------------------
+Using TypeScript +HTML + CSS = single (Javascript(3) )
+typescript+html+css ==build  (javascript+html+css)
+
+WebPack => typescript   map        javascript
+-----------------------------------------------------------------
+How and Where do i start :- 
+
+							Root
+							Comp
+ 							 |
+ 	------------------------------------------------------
+ 	Header					Body						Footer
+----------- 		-----------------------		
+Ad        Sign     	placeholder 		 static        copy
+
+Where to start from : 
+a) I need  a scaffolding 
+Template project 
+
+How to create a template project  ?
+
+angular cli 
+
+
+npm (node package manager)
+Allow to manage global and local package 
+local -=> Available to your project 
+gobal => available to everyone 
+	(utilities shoudl gobllay installed )
+
+-------------------------------------------
+npm install -g  typescript
+
+npm install -g typescript@2.0
+--------------------------------------------
+
+
+local and global 
+
+global change does not affect your project package.json 
+
+local changes affects your package.json 
+
+npm install ---> when a developer checkout the project 
+he get all binary dependencies which the project uses 
+
+
+Now the question arises is that how to write a type script 
+-------------------------------------------------------------
+Angular tools : 
+1) Angular CLI 
+
+i need to npm @angular/cli@6.2.4
+this i a global utility 
+
+npm install @angular/cli@6.2.4 
+
+a) package.json 
+b) angular.json file( The configuration)
+c) typescripts 
+d) testing (Unit Testings)
+e) build configuration 
+
+
+main.ts --> Boots a module --> AppModule--> Is defined in app.module.ts ==> inturn it will bootstrap a component called AppComponent --> app.component.ts--> which inturs it will show a template --> app.component.html decorated by app.component.css
+
+
+
+ng new  (Creates a new project)
+	|-- package.json 
+	|-- angular.json 
+	|-- src 
+		 |-- app.module.ts
+		 |-- app.component.ts
+		 |---app.component.html
+		 |---app.component.css
+
+ng serve ==> 
+	main.ts get called 
+		----> app.module.ts
+				------->  app.component.ts
+
+
+
+
+ A component is identified as component by 
+ provide a Annotation 
+ @Component ({
+ 	tempalate
+ 	css 
+ 	name
+ })
+ class MyComponent {
+
+ }
+
+
+
+ng g  c  componentname 
+
+the component gets created --no-spec 
+then i would understand the componetn 
+
+3files (1) .ts (Component )
+
+	@Component({
+		selector, tempalte, css
+	})
+	export classs {
+
+	}
+------------------------------------------------------------
+How to add a css file to your angular 
+
+a) do a npm and get the module in your app 
+		npm install bootstrap@3.3.7 
+
+b) then open your angular.json in the styles section 
+	ad the path to the style sheet 
+
+c)  Define some nav bar  
+
+
+
+
+1. Create  a method in  your component class 
+2. now create a binding for this method by a buttong 
+	<button (click)="Method($event)"> SomeButton</button> 
+
+3. Display the changed content {{var}}
+
+
+
+
+Components : are basically calses 
+they have a lifeccylle 
+constructor 
+ngInit 
+A component is a class 
+A component becomes component @Component 
+A component has selector --- <Element > 
+A component has template --< html 
+a component has css which is the stylesheet 
+----------------------------------------------
+extend ngOnInit / onDestroy 
+The dom model css or the live object are avaiable after the init 
+
+The only thing that helps me it also state 
+
+The sate is binded using {{}}
+
+
+A component also backs its template events 
+
+A component will also support some features  that is 
+Dependecy injection 
+
+A component is always a part of  a module 
+A component needs to registered with module 
+app.module.ts --> will always hav the component 
+registered 
+
+to place a compoent anywhere you will need to 
+place the same with the tag..... 
+--------------------------------------------------------------
+Directives 
+*ngFor 
+*ngIF-else/*ngIf 
+*ngClass 
+*ngStyle 
+
+---------------------------------------------------------------
+
+We will create a dyanamic menu 
+
+menuitems = [{link : '', label:'', active : true},{link : '', label:'', active : true},{link : '', label:'', active : true},{link : '', label:'', active : true}]
+
+in my html page i did forEach using 
+<div *ngFor="item of menuitems" [ngClass] = "{'active' : item.active}" (click)="hadndle($event)">{{item.label}}</div>
+
+// problem 
+
+
+* for Directives 
+[ngClass] = setting values to the attrintues 
+() = for events 
+[()] -= form two way binding 
+
+@Component({
+	
+})
+export class TestComponent  //
+
+
+
+1. i would do a ng g s --> this creates a service 
+2. a Service is a class 
+   a service is service because of @Injectible 
+   @ service is a service because of  providedIn 
+   a Service is aservice than can injected in any component 
+   just pass this as parameter in the  constructor and 
+   the service would get injected 
+   if you make it as public parameter as per type script 
+   it become a instance variabale 
+
+ 3. a  service is single ton 
+ 4. the contsitructor would get called only once 
+ 5.  any state in the service is common acrros the components 
+ services are generally used to share data across componentrs 
+
+
+
+1.  ng  g  s employee ---> employee.service.ts 
+2.  you will open your components files and inject it 
+
+	constructor(public var:serviceType)
+	{
+
+	}
+
+3.  then you have the service to access its methods 	
+
+
+
+
+
+
+A) Service can be accessed using a http Api 
+B) which means it provides me with http api 
+
+
+
+
+1. Step 1. To access a remote service i need 
+	httpClient : 
+
+2. the HttpClient is part of the HttpClientModule hence 
+	unless untill you donot import the module you will 
+		not able to use the httpClient 
+
+3. Modules need to imported in the the app.moduel.ts 
+	in the imports 
+
+4. the HttpClient is a service that can be injected 
+	as anyother service 
+
+5. a httpclient when does call .get. put. post . delete 
+		returns a Observable // a promise .... 
+
+6. when a promise is returned ... : you will need to subscribe on it so that when action is complee you get resonse 
+
+
+
+
+1. import 
+import { HttpClient } from '@angular/common/http'
+where ever you wish to use 
+2. Inject 
+ constructor(public http: HttpClient) {
+    console.log('Initialized...........')
+  }
+3. the above will not work if you have not imported the 
+	module HttpClientModule in you app.module.ts 
+imports: [
+    BrowserModule,
+    HttpClientModule
+  ],
+4. How to call 
+	getVersion (){
+		return this.http.get("url")
+	}
+5. in your component you have already injected the service 
+	// if not inject the service....
+6. Now subscribe the for the result 
+ this.empservice.getVersion().subscribe(result=>{
+   	this.somvar = result;
+   })
+
+1. I create a Subject and Initialize in my service 
+subject: Subject<String> = new Subject();
+
+2. i define service method to access the subject 
+  getSubscriber() {
+    return this.subject.asObservable();
+  }
+
+  getPublisher(){
+    return this.subject;
+  }
+ 3. I inject the service in the source and the target 
+ constructor(public empservice: EmployeeService) { }
+ 4.  On the source(Publisher)
+ 	i add a event  <td><span (click)="sendInfo()">{{emp}}</span></td>
+5. I add the method sendInfo to my compoennt file 
+ sendInfo(){
+     console.log("Publishing..............");
+     this.empservice.getPublisher().next("some data ......");
+     console.log("Published Successfully..........");    
+  }
+when ever you clikc the evnet will get publsihed 
+6. now if i wish to subscribe in my other component i wil need to inject the same service 
+constructor(public empservice: EmployeeService) { }
+7.  subscibe this component must susbscribe and on a promise change the data of the 
+local state of the component value 
+ this.empservice.getSubscriber().subscribe(data => {
+      console.log("Event Recevied with Data ", data);
+      this.event = data;
+    });
+here this is event // the event is avaribale in my local component (Target)
+if the event value changes so will my dom modle change 
+   
+
+Typescript
+Angular Setup 
+Package.jspn
+angular.json
+app.module.ts
+Components 
+@Component
+Templates 
+CSS 
+Service 
+Dependency injection 
+Objservables 
+HttpClient and accessing service 
+How the bidning 
+ngFor/directive 
+ngClass 
+ng Serve
+ng new 
+augury 
+angular with bootstrap 
+where put css dependencies 
+how to run a angular application 
+create many component 
+Publish Subscribe 
+Subject . Next 
+That in angular the state is the king 
+-----------------------------------------------------------------------------------------
+
+Routing 
+-------
+
+routing rules 
+which route = which compoinet 
+
+now you should be able to handle browser back issues 
+history 
+browser back 
+cache isues 
+
+
+
+a) Define Routes 
+b) Import Router Module 
+c) Define where you want the place holder where routes will rendered 
+	<router-outlet></router-outlet>
+d) create your route links 
+e) handle routes that are not valid (Oops )
+f) Guard you routes by securing them routerGuarding 
+
+
+
+
+1. Part is 
+const routes : Router = [
+	{
+		path : 'home' , 
+		component :  HomeComponent
+	},
+	{
+		path : 'movies', 
+		component : MoviesComponent
+	},
+	{
+		path :  'search',
+		component : SearchComponent  
+	},
+	{
+		path :  '**', 
+		component :  Oops404Component 
+	}
+]
+=======================================
+in my app.module.ts 
+--------------------
+import {RouterModule} from '@angular/router'
+
+imports : [
+	HttpClientModule, 
+	BrowserModule, 
+	RouterModule.forRoot(routes)
+]
+-----------------------------------------------------
+What should i do to now make the routes been shown to a specific page 
+in my main.component.ts 
+	<router-outlet></router-outlet>
+------------------------------------------------------
+Add links 
+<a href="movies"></a> it wil refres
+
+
+a const of routes = []
+
+inmport   RouterModule.forRoot(routes)
+
+<router-outlet>
+
+you changed your links {{ state 1 + state 2 }}
+
+
+
+
+
+
+Angular is made up of the folliwing 
+
+1) @angular/cli 
+
+a)  ng serve  // to serve your application 
+b)  ng new    // to create a new application 
+c)  ng test   // to runt test cass 
+d)  ng build  --prod  // to create production mangled code /dist 
+e)  ng generate component / ng g c  to generate the component  
+f)  ng generate service   / ng g s  to generate the service 
+g)  ng generate directive  / ng g d  to generate our own directive 
+h)  ng generate pipe 	   / ng g p   to generate a pipe 
+i)  ng generate guard     /  ng g g   to generate a router guard 
+
+2)  NPM 
+	npm init 
+	npm install -g 
+	npm install 
+
+3)  we saw the typescript 
+	a) class 
+	b) tsc 
+	c) tsc classes, interfaces, abstract classes, contructors , methods 
+		inheritence , private , public 
+	d) ts -> js 
+
+4) Anuglar is written using the ts 
+	a) Component 
+		state 
+		callbackmethod Handlers 
+		constructor (dependency injection)
+		lifecycle method onInit/onDestroy 
+		has a template 
+		has ts file 
+		has css file 
+		a component is a prototype and not a singleton 
+
+5)   angular.json 
+	 |--- config file 
+	 	a) scripts 
+	 	b) css 
+	 	c) build config 
+	 	d) your dependencies related the build managed 
+
+
+6)   services 
+	a) Service @Injectible 
+	b) Service is a singleton 
+	c) Service can be injected in components and other services 
+
+
+7)  Subject  (No Default Value)
+	BehaviourSubject (Remembers the last published value )
+	ReplaySubject  (Last n Values will replayed ---> Also timer )
+	AsyncSubject  // next  .complete 
+
+
+8)  *ngFor
+	[ngClass]
+
+9)  routes 
+	its the worflow of the controller ---> 
+	<router-outlet></router-outlet> {Placeholder}
+	
+	how does angular know what to place in the outlet 
+	matching rules it matches the path in the routerLink
+	if the path matches i will simply replate the component 
+	RootRoutes 
+	const of routes ---> 
+
+10)  HTTPClient => node + express 
+
+
+11)   Debug 
+-----------------------------------------------------------------------------------------
+
+1. Router Guards 
+2. Security 
+	Auth0.js
+3. Test Cases 
+4. RxjS pipe. map , 
+5. ngIf 
+
+================================================
+
+
+done Components 
+done Services 
+Routes 
+Http 
+
+
+Modules 
+Forms 
+Pipes 
+Directives 
+Guards 
+
+
+
+a) Router Guurd 
+b) Pipes 
+c) Directives 
+d) Security 
+e) Security with Auth0.js 
+
+
+localstorage
+sessionStorage
+
+Each browser has is own storage : 
+sessionStorage 
+localStorage 
+
+
+How to hide our menu  ? 
+
+1. Components 
+2. Services 
+3. Subjects 
+4. Pipes 
+5. Routes 
+6. Router 
+7. RouterGuards 
+8. Using Bootrap /css with angular 
+9. RxJS pub/sub
+10. Event Handling 
+11. ngFor , ngIF, 
+12. canActivate, data , 
+13. Dependency injections 
+14. HttpModule , HttpClient 
+15. RouterModule 
+16. How to Secure your application 
+17. State is the king 
+18. angular.json and its surrounding things 
+
+
+1. I have a create a Applciation which register Auth0.js (ClientID)//
+2. i wrote  AuthJSService.ts 
+
+
+-==============================================================================
+
+1. the spec file : -- 
+	is  test file every component, service will have a corresponding specfile 
+
+2.  to test angular components you will need to construct a testBed 
+	the test bed is similar to invoking the (angular app.module.ts (BootStraping))
+	which means a l  the components in scope , services in scoped, providers in scope, 
+	imports in scope should be registered in the test bed 
+TestBed.configureTestingModule({
+      declarations: [DisplayComponent],
+      imports: [HttpClientModule]
+    })
+
+    	if you are testing a componnet 
+    		and that component is resteing on a service 
+    			that service is resing on another one 
+    	ur testing bed should every 
+
+3.   f and x  
+		fdescribe =  this spec   
+		fit  = only the one marked fit will exeute 
+
+4.   x --> this and its dependenants 
+
+https://github.com/nileshdevdas/angular6
+
+
+
+1) npm 
+2) angular-cli
+3) java
+4) cordova 
+	npm i -g cordova 
+5)  andriod studio 
+6)  ADK 
+
+
+npm install -g cordova 
+
+cordova create sApp com.siemens.sApp sApp
+
+cordova platform add android
+
+dir // www 
+--------------------------------------------------------------------------
+
+switch to your angular project 
+
+index.html 
+
+<base href="./">
+<script src="cordova.js" type="text/javascript"></script>
+
+// for making your bootstrap menu navigation work
+npm install jquery 
+
+in your angular.json in the script section 
+"scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+
+
+ng build --prod 
+
+Copy your  contents of dist/yourapp/contents to www 
+
+-----------------------------------------------------------------------------
+
+
+
+To test your applciation 
+cordova run android
+
+------------------------------------------------------------------------------
+
+
+@Self()
+@Option()
+@Host()
+
+pipe(share())
+
+=======================================================================
+@Self() // the service is provided by the component itself can be only used by th 
+componen 
+@Optional() // inject if available but throw error if provider is not avialable 
+@Host() // if i say its host /// similar like Self but has extra feature it will try to check the the same component if not found will check if its provided by the parent 
+------------------------------------------------------------------------------------
+if you add the service to the module then the bigger issue is that it is injectiable 
+everywhere 
+
+@Self ---> only for me 
+@Host  -- only for me or the childen below me 
+@Optional --> if exist great inject else dont cribb 
+==================================================================================
+
+Pipe---> 
+
+
+
+
+list(1000)
+["Axxx", "bbb", "xxxx", "DDD"]
+
+newarr = array.filter(each => each.startWith('a'))
+
+array.takeUntil(each => each.name=="nilesh")
+[]
+
+array.minx();
+
+array.max();
+
+
+
+
+Angualar 6 ---> 
+Components 
+Services 
+HTTP 
+RouterGuaurds
+Testing 
+Routes 
+Authjs
+Forms 
+Pipes 
+Directives 
+Angular cli 
+Cordova 
+Tempaltes 
+Build 
+We have Andriod Application Creation 
+it()// test cases 
+ng build 
+ng new 
+ng  g   c|s|g|p|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://testmate.vinsys.com:443/exam/smng6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

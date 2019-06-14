@@ -12,6 +12,7 @@ import { OopsComponent } from './oops/oops.component';
 import { AuthGuard } from './auth.guard';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { SampleComponent } from './sample/sample.component';
 
 const routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -28,7 +29,8 @@ const routes = [
     LoginComponent,
     OopsComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SampleComponent
   ],
   imports: [
     BrowserModule,
